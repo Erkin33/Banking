@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Для Next.js 13, если ты используешь app router
 
 import React, { useState } from "react";
 
@@ -9,7 +9,7 @@ export default function AuthPage() {
   const [error, setError] = useState(null);
   const [isLogin, setIsLogin] = useState(true);
 
-  // URL твоего backend API (например, URL Railway)
+  // Берём URL бэкенда из переменной окружения (иначе fallback на localhost)
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
   const handleSubmit = async (e) => {
@@ -19,9 +19,9 @@ export default function AuthPage() {
       const response = await fetch(`${backendUrl}${endpoint}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
@@ -29,11 +29,15 @@ export default function AuthPage() {
         throw new Error(data.error || "Ошибка запроса");
       }
 
-      const data = await response.json();
+      const data = await response.json(); 
+      // Для /register мы просто выводим "Регистрация прошла успешно!"
+      // Для /login получаем { token }, сохраняем в state
       if (isLogin) {
         setToken(data.token);
       }
+
       alert(isLogin ? "Вход выполнен успешно!" : "Регистрация прошла успешно!");
+      setError(null);
     } catch (err) {
       setError(err.message);
     }
@@ -67,6 +71,7 @@ export default function AuthPage() {
           {isLogin ? "Войти" : "Зарегистрироваться"}
         </button>
       </form>
+
       <button
         onClick={() => {
           setIsLogin(!isLogin);
@@ -74,9 +79,13 @@ export default function AuthPage() {
         }}
         style={{ marginTop: "10px", width: "100%" }}
       >
-        {isLogin ? "Нет аккаунта? Зарегистрируйтесь" : "Уже есть аккаунт? Войдите"}
+        {isLogin
+          ? "Нет аккаунта? Зарегистрируйтесь"
+          : "Уже есть аккаунт? Войдите"}
       </button>
+
       {error && <p style={{ color: "red" }}>{error}</p>}
+
       {token && (
         <div style={{ marginTop: "20px", wordBreak: "break-all" }}>
           <strong>JWT Token:</strong>
