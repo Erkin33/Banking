@@ -6,8 +6,16 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
 const app = express();
+
+// ЯВНО разрешаем запросы только с Vercel-домена
+app.use(cors({
+  origin: "https://banking-omega-seven.vercel.app", // замени на свой реальный URL фронтенда
+  methods: ["GET", "POST", "OPTIONS"], // какие методы разрешаем
+  allowedHeaders: ["Content-Type", "Authorization"], // какие заголовки разрешаем
+  credentials: true // если нужны куки/сессии
+}));
+
 app.use(express.json());
-app.use(cors());
 
 // Подключение к базе данных
 const pool = new Pool({
