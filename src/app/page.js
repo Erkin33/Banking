@@ -1,11 +1,13 @@
 import Image from "next/image";
 import "./globals.css";
 import "./start.css"
+import Tranzaction from "@/components/maintr";
 import Header from "@/components/header-top";
 export default function Home() {
   return (
     <main className="w-full h-auto ">
       <Header></Header>
+      <Tranzaction></Tranzaction>
     </main>
   );
 }

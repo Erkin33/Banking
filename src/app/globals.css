@@ -22,3 +22,70 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+@font-face {
+  font-family: 'Lexend';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendBold';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendExtraBold';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendLight';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendMedium';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendRegular';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight:200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendSemiBold';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LexendThin';
+  src: url('/public/fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+.font-lexend {
+  font-family: 'Lexend', sans-serif;
+}
+
+.font-lexend-light {
+  font-family: 'LexendLight' , sans-serif;
+  font-weight: 300;
+}
+
+.font-lexend-extrabold {
+  font-family: 'LexendExtraBold', sans-serif;
+}
+.font-lexend-medium{
+  font-family: 'LexendMedium', sans-serif;
+}
+.font-lexend-regilar{
+  font-family: 'LexendRegular', sans-serif;
+}
