@@ -7,12 +7,15 @@ const cors = require("cors");
 
 const app = express();
 
-// ЯВНО разрешаем запросы только с Vercel-домена
+// ЯВНО разрешаем запросы с нужных доменов
 app.use(cors({
-  origin: "https://banking-omega-seven.vercel.app", // замени на свой реальный URL фронтенда
-  methods: ["GET", "POST", "OPTIONS"], // какие методы разрешаем
-  allowedHeaders: ["Content-Type", "Authorization"], // какие заголовки разрешаем
-  credentials: true // если нужны куки/сессии
+  origin: [
+    "https://banking-omega-seven.vercel.app", // Твой Vercel-домен
+    "http://localhost:3000"                  // Для локальной разработки (можешь удалить, если не нужно)
+  ],
+  methods: ["GET", "POST", "OPTIONS"], 
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true // Если используешь куки/сессии, оставь true
 }));
 
 app.use(express.json());
